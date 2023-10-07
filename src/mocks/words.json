@@ -1,0 +1,8 @@
+{
+  "fruits": ["apple", "banana", "orange", "grape", "kiwi", "mango", "strawberry", "pineapple", "blueberry", "pear"],
+  "animals": ["dog", "cat", "elephant", "lion", "tiger", "giraffe", "zebra", "monkey", "penguin", "kangaroo"],
+  "colors": ["red", "blue", "green", "yellow", "purple", "orange", "pink", "brown", "black", "white"],
+  "countries": ["USA", "Canada", "UK", "France", "Germany", "Spain", "Japan", "Australia", "Brazil", "India"],
+  "languages": ["English", "Spanish", "French", "German", "Chinese", "Japanese", "Arabic", "Russian", "Portuguese", "Hindi"]
+}
+

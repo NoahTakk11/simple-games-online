@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FrameGame from "../components/guess-word/FrameGame";
+---
+
+<Layout title="guess-word-game">
+  <section
+    class="flex flex-col items-center justify-center m-auto h-screen bg-[url(../../public/bg-guess-the-word.png)] bg-cover"
+  >
+    <FrameGame client:only="react"/>
+  </section>
+</Layout>
