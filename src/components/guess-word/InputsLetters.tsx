@@ -38,7 +38,7 @@ export default function InputsLetters(): JSX.Element {
       String(inputIndex)
     ) as HTMLInputElement;
 
-    const value = (event.target as HTMLInputElement).value;
+    const value = (event.target as HTMLInputElement).value.toLowerCase();
 
     if (
       inputIndex < randomWord.length - 1 &&
