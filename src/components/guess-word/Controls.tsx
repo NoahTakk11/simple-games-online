@@ -36,7 +36,9 @@ export default function Controls(): JSX.Element {
           "style",
           "m-1 w-10 h-10 border-2 border-[#4A5567] rounded-lg text-2xl text-[#F2F5F9] text-center bg-[#030616] bg-opacity-10"
         );
+        letterBox.placeholder = "";
         letterBox.value = "";
+        letterBox.disabled = false;
       }
     });
     setShouldUpdateRandomWorld(false);
@@ -57,7 +59,9 @@ export default function Controls(): JSX.Element {
           "style",
           "m-1 w-10 h-10 border-2 border-[#4A5567] rounded-lg text-2xl text-[#F2F5F9] text-center bg-[#030616] bg-opacity-10"
         );
+        letterBox.placeholder = "";
         letterBox.value = "";
+        letterBox.disabled = false;
       }
     });
     setShouldUpdateRandomWorld(false);

@@ -33,24 +33,25 @@ export default function InputsLetters(): JSX.Element {
     newInput[index] = inputValue;
   };
 
-  const handleInputValidation = (event: KeyboardEvent) => {
+  const handleInputValidation = (event: Event) => {
     const inputLetter = document.getElementById(
       String(inputIndex)
     ) as HTMLInputElement;
 
-    const value = event.key;
+    const value = (event.target as HTMLInputElement).value;
 
     if (
       inputIndex < randomWord.length - 1 &&
       randomWord[inputIndex] === value
     ) {
       setInputIndex(inputIndex + 1);
-      inputLetter.value = value;
+      inputLetter.placeholder = value;
+      inputLetter.disabled = true;
     } else if (
       inputIndex === randomWord.length - 1 &&
       randomWord[inputIndex] === value
     ) {
-      inputLetter.value = value;
+      inputLetter.placeholder = value;
       setWin(true);
       setGameState(false);
     } else {
@@ -73,27 +74,35 @@ export default function InputsLetters(): JSX.Element {
     setWin(false);
     if (tries === 0) {
       setLose(true);
-      return () =>
-        document.removeEventListener("keydown", handleInputValidation);
+      return () => document.removeEventListener("input", handleInputValidation);
     }
     const inputLetter = document.getElementById(
       String(inputIndex)
     ) as HTMLInputElement;
 
+    if (inputLetter.id === String(inputIndex)) {
+      inputLetter.focus();
+    }
+
     if (inputLetter instanceof HTMLInputElement) {
       inputLetter.setAttribute("style", "border-color: #672171");
-      inputLetter.value = "_";
+      inputLetter.placeholder = "_";
     }
     setInputs(Array(randomWord.length).fill(""));
 
-    document.addEventListener("keydown", handleInputValidation);
+    document.addEventListener("input", handleInputValidation);
 
-    return () => document.removeEventListener("keydown", handleInputValidation);
+    return () => document.removeEventListener("input", handleInputValidation);
   }, [randomWord, inputIndex, tries]);
 
   return (
     <div className="flex items-center justify-center flex-wrap p-2">
-      {win ? <Confetti /> : ""}
+      {win ? (
+        <Confetti className="h-screen absolute top-[-10px] w-full z-50" />
+      ) : (
+        ""
+      )}
+
       <div
         className={`z-10 top-5 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded absolute ${
           viewAlert ? "block" : "hidden"
@@ -104,7 +113,6 @@ export default function InputsLetters(): JSX.Element {
         <span className="block sm:inline">Try another.</span>
       </div>
 
-      <input className="hidden" type="text" autoFocus />
       <div className="flex items-center justify-center flex-wrap p-0">
         {lose ? (
           <div>
