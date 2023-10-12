@@ -80,7 +80,7 @@ export default function InputsLetters(): JSX.Element {
       String(inputIndex)
     ) as HTMLInputElement;
 
-    if (inputLetter.id === String(inputIndex)) {
+    if (inputLetter && inputLetter.id === String(inputIndex)) {
       inputLetter.focus();
     }
 
