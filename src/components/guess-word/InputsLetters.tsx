@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRandomWords } from "../../zustand/word-guess";
 import Confetti from "react-confetti";
 //Componets
-import { CustomInputs } from "./CustomInputs";
+import CustomInputs from "./CustomInputs";
 
 import "../../styles/index.css";
 
@@ -21,7 +21,7 @@ export default function InputsLetters(): JSX.Element {
     setWin,
   } = useRandomWords();
   const [inputs, setInputs] = useState(Array(randomWord.length).fill(""));
-  const inputRef = useRef<HTMLInputElement | null>(null);
+
   const [viewAlert, setViewAlert] = useState(false);
 
   const handleInputs = (
@@ -36,23 +36,21 @@ export default function InputsLetters(): JSX.Element {
   const handleInputValidation = (event: KeyboardEvent) => {
     const inputLetter = document.getElementById(
       String(inputIndex)
-    ) as HTMLParagraphElement;
+    ) as HTMLInputElement;
 
     const value = event.key;
-    console.log(`la tecla presionada es ${value}`);
 
     if (
       inputIndex < randomWord.length - 1 &&
       randomWord[inputIndex] === value
     ) {
       setInputIndex(inputIndex + 1);
-      inputLetter.textContent = value;
+      inputLetter.value = value;
     } else if (
       inputIndex === randomWord.length - 1 &&
       randomWord[inputIndex] === value
     ) {
-      console.log("GANASTE");
-      inputLetter.textContent = value;
+      inputLetter.value = value;
       setWin(true);
       setGameState(false);
     } else {
@@ -69,33 +67,29 @@ export default function InputsLetters(): JSX.Element {
     }
   };
 
-  console.log("input index -> ", inputIndex);
-  console.log("letter -> ", randomWord[inputIndex]);
-
   useEffect(() => {
     setGameState(true);
     setLose(false);
     setWin(false);
     if (tries === 0) {
-      console.log("PERDISTE");
       setLose(true);
       return () =>
         document.removeEventListener("keydown", handleInputValidation);
     }
     const inputLetter = document.getElementById(
       String(inputIndex)
-    ) as HTMLParagraphElement;
+    ) as HTMLInputElement;
 
-    if (inputLetter instanceof HTMLParagraphElement) {
+    if (inputLetter instanceof HTMLInputElement) {
       inputLetter.setAttribute("style", "border-color: #672171");
-      inputLetter.textContent = "_";
+      inputLetter.value = "_";
     }
     setInputs(Array(randomWord.length).fill(""));
 
     document.addEventListener("keydown", handleInputValidation);
 
     return () => document.removeEventListener("keydown", handleInputValidation);
-  }, [randomWord, inputRef, inputIndex, tries]);
+  }, [randomWord, inputIndex, tries]);
 
   return (
     <div className="flex items-center justify-center flex-wrap p-2">
@@ -119,7 +113,6 @@ export default function InputsLetters(): JSX.Element {
         ) : (
           inputs.map((valor, index) => (
             <CustomInputs
-              ref={index === inputIndex ? inputRef : null}
               key={index}
               id={String(index)}
               index={index}

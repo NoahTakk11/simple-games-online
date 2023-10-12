@@ -31,8 +31,6 @@ export default function FrameGame(): JSX.Element {
     setWord(disorderWord);
   };
 
-  console.log("-> ", randomWord);
-  console.log(shouldUpdateRandomWorld);
   useEffect(() => {
     if (shouldUpdateRandomWorld) {
       setRandomWord();
@@ -42,14 +40,14 @@ export default function FrameGame(): JSX.Element {
   }, [randomWord]);
 
   return (
-    <div className="flex flex-col items-center border-[#030616] rounded-xl bg-gradient-to-tl from-[#4A5567] to-[#030616] w-[90%] h-[80%] md:w-[60%] md:h-[50%] lg:w-[40%] lg:h-[80%]">
+    <div className="fixed flex flex-col items-center border-[#030616] rounded-xl bg-gradient-to-tl from-[#4A5567] to-[#030616] w-[90%] h-[80%] md:w-[60%] md:h-[80%] lg:w-[40%] lg:h-[80%]">
       <header className="mb-10 mt-10">
         <img src="../../../public/Word Scramblle.svg" alt="" />
       </header>
       <main className="flex flex-col items-center justify-center">
-        <div className="bg-[#4A5567] border-black border-2 rounded-md px-2 py-1 shadow-2xl mb-10">
+        <div className="bg-[#4A5567] max-w-[60%] border-black border-2 rounded-md px-2 py-1 shadow-2xl mb-5">
           <h1
-            className={`text-4xl text-center text-[#97A3B6] tracking-wider px-20 py-2 ${
+            className={`text-2xl md:text-4xl text-center text-[#97A3B6] tracking-wider px-5 md:px-5 py-2 ${
               gameState ? "" : "rotate-scale-up-horizontal"
             }`}
             style={style}

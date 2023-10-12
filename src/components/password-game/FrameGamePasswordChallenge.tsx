@@ -8,13 +8,8 @@ import { RULES } from "../../constants/rules";
 export default function FrameGamePasswordChallenge(): JSX.Element {
   const [passwordStrong, setPasswordStrong] = useState(false);
 
-  console.log(RULES.length);
-
   const { checkedList, activatedItems, addCheckedlist, removeCheckedList } =
     useRules();
-
-  console.log("checked ->", checkedList);
-  console.log("activeItems -> ", activatedItems);
 
   useEffect(() => {
     const verifyRules = (password: string) => {
@@ -111,8 +106,6 @@ export default function FrameGamePasswordChallenge(): JSX.Element {
         removeCheckedList("12");
         setPasswordStrong(false);
       }
-
-      console.log("-> ", passwordStrong);
     };
 
     const handleInput = (event: Event) => {

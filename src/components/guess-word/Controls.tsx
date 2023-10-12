@@ -29,20 +29,17 @@ export default function Controls(): JSX.Element {
     setLose(false);
     setWin(false);
 
-    const letterBox = document.querySelectorAll("p");
+    const letterBox = document.querySelectorAll("input");
     letterBox.forEach((letterBox) => {
-      if (letterBox instanceof HTMLParagraphElement) {
+      if (letterBox instanceof HTMLInputElement) {
         letterBox.setAttribute(
           "style",
           "m-1 w-10 h-10 border-2 border-[#4A5567] rounded-lg text-2xl text-[#F2F5F9] text-center bg-[#030616] bg-opacity-10"
         );
-        letterBox.textContent = "";
+        letterBox.value = "";
       }
     });
     setShouldUpdateRandomWorld(false);
-
-    console.log(randomWord);
-    console.log(shouldUpdateRandomWorld);
   };
 
   const reset = () => {
@@ -53,20 +50,17 @@ export default function Controls(): JSX.Element {
     setLose(false);
     setWin(false);
 
-    const letterBox = document.querySelectorAll("p");
+    const letterBox = document.querySelectorAll("input");
     letterBox.forEach((letterBox) => {
-      if (letterBox instanceof HTMLParagraphElement) {
+      if (letterBox instanceof HTMLInputElement) {
         letterBox.setAttribute(
           "style",
           "m-1 w-10 h-10 border-2 border-[#4A5567] rounded-lg text-2xl text-[#F2F5F9] text-center bg-[#030616] bg-opacity-10"
         );
-        letterBox.textContent = "";
+        letterBox.value = "";
       }
     });
     setShouldUpdateRandomWorld(false);
-
-    console.log(randomWord);
-    console.log(shouldUpdateRandomWorld);
   };
 
   return (
