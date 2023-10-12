@@ -1,9 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CardGame from "../components/CardGame";
 ---
 
 <Layout title="Choose a Game">
-  <main>
-    <a href="/guess-word">go to game</a>
+  <main class="flex flex-col bg-slate-100 h-screen items-center justify-center">
+    <h1 class="text-2xl px-2 text-center md:text-6xl absolute top-5 md:top-10">
+      Welcome to <span class="font-bold">Simple Games Online</span>
+    </h1>
+    <h2 class="text-xl md:text-3xl absolute top-20 md:top-32">
+      Enjoy solving either game
+    </h2>
+    <div
+      class="flex flex-col justify-center items-center md:grid gap-3 md:grid-cols-2 md:gap-5"
+    >
+      <CardGame
+        href="/simple-games-online/guess-word"
+        title="go to guess-word game"
+        description="Try to guess what word appears before you, your only clue is a set of disordered letters, you have five tries to do it."
+        client:only="react"
+      />
+
+      <CardGame
+        href="/simple-games-online/password-challenge"
+        title="go to password-challenge game"
+        description="There is nothing more important than having a secure, hacker-proof password. We will help you create one like no other."
+        client:only="react"
+      />
+    </div>
+    <p class="my-5 underline font-semibold absolute bottom-0 text-slate-900">
+      Created By Gonzalo Villavicencio
+    </p>
   </main>
 </Layout>

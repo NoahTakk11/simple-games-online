@@ -11,7 +11,7 @@ interface State {
   inputIndex: number;
   gameState: boolean;
   lose: boolean;
-  win: boolnea;
+  win: boolean;
 }
 
 interface Actions {

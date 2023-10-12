@@ -70,6 +70,9 @@ export default function FrameGame(): JSX.Element {
           <Controls />
         </div>
       </main>
+      <p className="my-5 underline font-semibold absolute bottom-0 text-slate-50">
+        Created By Gonzalo Villavicencio
+      </p>
     </div>
   );
 }
