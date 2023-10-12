@@ -139,7 +139,7 @@ export default function FrameGamePasswordChallenge(): JSX.Element {
         />
       ))}
 
-      <p className="my-5 underline font-semibold absolute bottom-0">
+      <p className="my-5 underline font-semibold relative bottom-0">
         Created By Gonzalo Villavicencio
       </p>
     </div>
